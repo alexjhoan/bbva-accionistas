@@ -1,0 +1,26 @@
+#login {
+  position: relative;
+  background-color: var(--white);
+  width: 100%;
+  z-index: 10;
+  padding-top: 100px;
+}
+
+#login form {
+  max-width: 350px;
+  margin: auto;
+}
+
+#login form input:not([type="checkbox"]) {
+  background-color: var(--gray-light);
+  border-radius: 0;
+  border: none;
+  border-bottom: solid 1px var(--gray);
+}
+
+#login form input:hover,
+#login form input:active,
+#login form input:focus {
+  box-shadow: none;
+  outline: none;
+}

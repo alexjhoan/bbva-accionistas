@@ -1,0 +1,62 @@
+<section id="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="loginClose"></div>
+        <p class="h3 text-center mb-3">¡Bienvenido!</p>
+        <form>
+          <div class="form-group">
+            <select
+              id="select_doc"
+              name="select_doc"
+              class="from-control"
+              tabindex="0"
+              title="Selecciona el tipo de documento"
+            >
+              <option value="V" selected>Cédula de identidad</option>
+              <option value="P">Pasaporte</option>
+              <option value="E">Extranjero</option>
+              <option value="C">Carnet diplomático</option>
+            </select>
+            <img
+              class="fa-angle-down"
+              id="img-select-doc"
+              src="fbin/fbin/Path-4.png"
+            />
+            <label for="select_doc">Tipo de documento</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Numero de documento"
+            />
+            <label for="floatingInput">Número de documento</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Default checkbox
+            </label>
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

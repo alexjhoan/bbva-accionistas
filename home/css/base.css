@@ -1,0 +1,74 @@
+:root {
+  --primary: #072146;
+  --secondary: #49a5e6;
+  --third: #028484;
+  --third-hover: #02a5a5;
+  --text: #121212;
+  --text-secondary: #000;
+  --white: #fff;
+  --black: #000;
+  --gray: #676767;
+  --gray-light: #f4f4f4;
+  font-size: 16px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+p.h1,
+h1,
+p.h2,
+h2,
+p.h3,
+h3,
+p.h4,
+h4,
+p.h5,
+h5,
+p.h6,
+h6,
+p,
+a,
+p,
+div,
+input,
+button,
+textarea {
+  font-family: "BBVA";
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+
+.btn.btn-primary {
+  border-color: var(--third);
+  background-color: var(--third);
+  border-radius: 0;
+  font-weight: 500;
+  padding: 8px 30px;
+  color: var(--white);
+  background-image: linear-gradient(
+    100deg,
+    var(--third-hover) 50%,
+    var(--third) 50%
+  );
+  transition: all 0.5s ease;
+  background-size: 210% 100%;
+  background-position: 99% center;
+  background-repeat: no-repeat;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary:focus {
+  background-color: var(--third) !important;
+  box-shadow: none !important;
+  outline: none;
+  background-position: 0 center;
+}

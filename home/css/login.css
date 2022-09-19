@@ -11,6 +11,10 @@
   margin: auto;
 }
 
+#login form * {
+  outline: none;
+}
+
 #login form input:not([type="checkbox"]) {
   background-color: var(--gray-light);
   border-radius: 0;
@@ -23,4 +27,77 @@
 #login form input:focus {
   box-shadow: none;
   outline: none;
+}
+
+#login input[type="number"] {
+  -webkit-appearance: textfield;
+}
+
+#login select {
+  padding: 25px 10px 0 16px;
+  background: var(--gray-light);
+  border: 0;
+  border-bottom: 1px solid var(--gray);
+  height: 56px;
+  width: 100%;
+  border-radius: 1px;
+  -webkit-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  font-size: 15px !important;
+}
+
+#login .select-floating img {
+  position: absolute;
+  width: 15px;
+  height: auto;
+  top: calc(50% - 5px);
+  right: 10px;
+}
+
+#login .select-floating label {
+  opacity: 0.65;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+#login .bbva-checkbox {
+  display: flex;
+  align-items: flex-end;
+}
+
+#login .form-check-input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  border: solid 1px var(--gray);
+  margin-right: 10px;
+}
+
+#login .form-check-input:checked[type="checkbox"] {
+  background-color: var(--white);
+  background-image: url(../../assets/img/icons/checkmark.svg);
+}
+
+#login .form-check-label {
+  user-select: none;
+}
+
+#login .tooltip-inf {
+  width: 25px;
+  height: auto;
+  margin-left: 15px;
+}
+
+#login .form-footer {
+  margin: 30px 0;
+  row-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login .form-footer a {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--secondary-dark);
 }

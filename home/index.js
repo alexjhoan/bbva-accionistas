@@ -9,4 +9,7 @@ $(window).on("load", function () {
   const tooltipList = [...tooltipTriggerList].map(
     (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
   )
+  $(".activeLogin").click(function () {
+    $("#login").toggleClass("active")
+  })
 })

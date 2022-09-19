@@ -3,7 +3,15 @@
   background-color: var(--white);
   width: 100%;
   z-index: 10;
+  padding-top: 60px;
+  max-height: 0vh;
+  transition: all ease 0.5s;
+  overflow: hidden;
+}
+
+#login.active {
   padding-top: 100px;
+  max-height: 100vh;
 }
 
 #login form {
@@ -33,11 +41,15 @@
   -webkit-appearance: textfield;
 }
 
-#login select {
-  padding: 25px 10px 0 16px;
+#login .select-floating {
   background: var(--gray-light);
-  border: 0;
   border-bottom: 1px solid var(--gray);
+}
+
+#login .select-floating select {
+  padding: 25px 10px 0 16px;
+  background-color: transparent;
+  border: 0;
   height: 56px;
   width: 100%;
   border-radius: 1px;
@@ -45,6 +57,8 @@
   text-indent: 1px;
   text-overflow: "";
   font-size: 15px !important;
+  position: relative;
+  z-index: 3;
 }
 
 #login .select-floating img {
@@ -53,6 +67,13 @@
   height: auto;
   top: calc(50% - 5px);
   right: 10px;
+  z-index: 1;
+  transform: rotate(0deg);
+  transition: transform ease-in-out 0.15s;
+}
+
+#login .select-floating select:focus ~ img {
+  transform: rotate(-180deg);
 }
 
 #login .select-floating label {
@@ -90,7 +111,7 @@
 
 #login .form-footer {
   margin: 30px 0;
-  row-gap: 20px;
+  row-gap: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;

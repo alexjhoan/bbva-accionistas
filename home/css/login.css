@@ -1,5 +1,4 @@
 #login {
-  position: relative;
   background-color: var(--white);
   width: 100%;
   z-index: 10;
@@ -12,6 +11,18 @@
 #login.active {
   padding-top: 100px;
   max-height: 100vh;
+}
+
+#login .loginClose {
+  position: absolute;
+  right: 16px;
+  top: 0;
+  cursor: pointer;
+}
+
+#login .loginClose img {
+  width: 20px;
+  height: auto;
 }
 
 #login form {

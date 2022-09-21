@@ -72,6 +72,9 @@ img {
   background-color: #1973b8 !important;
   box-shadow: none !important;
   outline: none;
+}
+
+.btn.btn-primary:hover {
   background-position: 0 center;
 }
 
@@ -99,6 +102,9 @@ img {
   background-color: var(--third) !important;
   box-shadow: none !important;
   outline: none;
+}
+
+.btn.btn-secondary:hover {
   background-position: 0 center;
 }
 

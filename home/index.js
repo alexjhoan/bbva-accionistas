@@ -12,6 +12,9 @@ $(window).on("load", function () {
   $(".activeLogin").click(function () {
     $("#login").toggleClass("active")
   })
+  if (window.location.pathname.includes("clave")) {
+    $("button.activeLogin").remove()
+  }
   new Swiper(".mySwiper", {
     loop: true,
     autoplay: {

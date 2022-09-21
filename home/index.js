@@ -13,7 +13,10 @@ $(window).on("load", function () {
     $("#login").toggleClass("active")
   })
   if (window.location.pathname.includes("clave")) {
-    $("button.activeLogin").remove()
+    setTimeout(() => {
+      $("button.activeLogin").remove()
+    }, 10)
+    console.log("first")
   }
   new Swiper(".mySwiper", {
     loop: true,

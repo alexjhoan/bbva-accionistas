@@ -1,78 +1,131 @@
 /*Banner*/
 .swiper {
-	width: 100%;     
+  width: 100%;
 }
 .swiper-slide img {
-	display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.swiper-button-next, .swiper-button-prev {
-	color: var(--white);
- }
-.swiper-button-prev, .swiper-rtl .swiper-button-next{
-	left: 50px;
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--white);
 }
-.swiper-button-next, .swiper-rtl .swiper-button-prev {
-	right: 50px;
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: 50px;
 }
-.swiper-button-prev, .swiper-button-next{
-	--swiper-navigation-size: 20px;
-    font-weight: bold;
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: 50px;
 }
-.swiper-button-prev:hover, .swiper-button-next:hover{
-	opacity: .6;
+.swiper-button-prev,
+.swiper-button-next {
+  --swiper-navigation-size: 20px;
+  font-weight: bold;
 }
-.swiper-pagination-bullet-active{
-	background: var(--white)!important;
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  opacity: 0.6;
+}
+.swiper-pagination-bullet-active {
+  background: var(--white) !important;
 }
 .swiper-pagination {
-	--swiper-pagination-color: white;
-    --swiper-pagination-bullet-size: 10px;
-    --swiper-pagination-bullet-inactive-color: #000;
-    --swiper-pagination-bullet-inactive-opacity: 0.25;
-    --swiper-pagination-bullet-opacity: 1;
-    --swiper-pagination-bullet-horizontal-gap: 3px;        
+  --swiper-pagination-color: white;
+  --swiper-pagination-bullet-size: 10px;
+  --swiper-pagination-bullet-inactive-color: #000;
+  --swiper-pagination-bullet-inactive-opacity: 0.25;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 3px;
 }
-.swiper-pagination-bullet{
-	background: transparent;
-    opacity: 1;
-    border: 1px solid #fff;
+.swiper-pagination-bullet {
+  background: transparent;
+  opacity: 1;
+  border: 1px solid #fff;
 }
 .swiper-slide .title {
-    font-size: 41px;
-    font-weight: 300;
+  font-size: 41px;
+  font-weight: 300;
 }
 .swiper-slide .subtitle h3 {
-	font-size: 32px;
-    line-height: 48px;
-    font-weight: 400;
+  font-size: 32px;
+  line-height: 48px;
+  font-weight: 400;
 }
-.swiper-slide .text p  {
-	margin-bottom: 16px;
-    text-align: left;
-    font-size: 15px;
-    line-height: 24px;
-    color: #626262
+.swiper-slide .text p {
+  margin-bottom: 16px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 24px;
+  color: #626262;
 }
-.swiper-text{
-	position: absolute;
-    top: 60px;
-    left: 0;
-    left: 115px;
-    max-width: 450px;
-    background: #fff;
-    padding: 30px;
-    max-height: 300px;
+.swiper-text {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  left: 115px;
+  max-width: 450px;
+  background: #fff;
+  padding: 30px;
+  max-height: 300px;
 }
-.swiper-bg{
-	background: transparent;
+.swiper-bg {
+  background: transparent;
 }
-.swiper-bg .subtitle  h3{
-	color: var(--white)!important;
+.swiper-bg .subtitle h3 {
+  color: var(--white) !important;
 }
-.swiper-bg .text  p{
-	color: var(--white)!important;
+.swiper-bg .text p {
+  color: var(--white) !important;
 }
-/*fin Banner*/    
+/*fin Banner*/
+
+/*documents home*/
+.container_documents {
+  margin-top: 72px;
+  margin-bottom: 72px;
+}
+.container_documents .title {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.list_documents img {
+  width: 20px;
+  height: auto;
+}
+.list_documents {
+  grid-template-columns: repeat(3, minmax(0, 250px));
+  display: grid;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.box_info .parrf {
+  margin: 0px;
+  margin-left: 40px;
+  font-size: 12px;
+  color: #626262;
+  position: relative;
+  margin-top: -20px;
+}
+.box_info .parrf2 {
+  margin-top: 20px;
+  height: 45px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+}
+.box_info a {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--secondary-dark) !important;
+  cursor: pointer;
+}
+/*fin documents home*/

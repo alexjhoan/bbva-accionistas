@@ -13,9 +13,50 @@
   <body>
     <div data-component="header"></div>
     <section id="change_password">
+      <a href="components/login.html" class="close"><img src="/assets/img/icons/close.svg" alt=""></a>
       <div class="container">
         <div class="row">
-          <div class="col-12">form nueva contraseña</div>
+          <div class="col-12">
+            <p class="h3 text-center">Cambio clave de acceso</p>
+            <p class="text-center change_text">
+              Ingresa tu documento de identificaci&#243;n y te enviaremos un
+              enlace <br class="d-none d-lg-block" />a tu correo elctr&#243;nico
+              para iniciar el proceso de recuperaci&#243;n de contrase&#241;a
+            </p>
+          </div>
+          <div class="col-12">
+            <form>
+              <div class="form-group form-floating select-floating mb-3">
+                <select
+                  id="select_doc"
+                  name="select_doc"
+                  class="from-control"
+                  tabindex="0"
+                  title="Selecciona el tipo de documento"
+                >
+                  <option value="V" selected>C&#233;dula de identidad</option>
+                  <option value="P">Pasaporte</option>
+                  <option value="E">Extranjero</option>
+                  <option value="C">Carnet diplom&#225;tico</option>
+                </select>
+                <img src="../assets/img/icons/arrow-down.svg" alt="" />
+                <label for="select_doc">Tipo de documento</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="tel"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder="Numero de documento"
+                />
+                <label for="floatingInput">N&#250;mero de documento</label>
+              </div>
+              <div class="form-footer">
+                <button class="btn btn-primary">Siguiente</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>

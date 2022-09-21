@@ -1,0 +1,129 @@
+:root {
+  --primary: #072146;
+  --secondary: #49a5e6;
+  --secondary-dark: #1464a5;
+  --secondary-light: #d4edfc;
+  --third: #028484;
+  --third-hover: #02a5a5;
+  --text: #121212;
+  --text-secondary: #000;
+  --yellow: #f8cd51;
+  --white: #fff;
+  --black: #000;
+  --gray: #676767;
+  --gray-light: #f4f4f4;
+  font-size: 16px;
+}
+
+#page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+}
+
+#page .content > *:not(#header):not(#home) {
+  display: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+p.h1,
+h1,
+p.h2,
+h2,
+p.h3,
+h3,
+p.h4,
+h4,
+p.h5,
+h5,
+p.h6,
+h6,
+p,
+a,
+p,
+div,
+input,
+button,
+textarea {
+  font-family: "BBVA";
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+
+.btn.btn-primary {
+  border-color: #1973b8;
+  background-color: #1973b8;
+  border-radius: 0;
+  font-weight: 500;
+  padding: 10px 30px;
+  color: var(--white);
+  background-image: linear-gradient(
+    100deg,
+    #1973b8 50%,
+    var(--secondary-dark) 50%
+  );
+  transition: all 0.5s ease;
+  background-size: 210% 100%;
+  background-position: 99% center;
+  background-repeat: no-repeat;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary:focus {
+  background-color: #1973b8 !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.btn.btn-primary:hover {
+  background-position: 0 center;
+}
+
+.btn.btn-secondary {
+  border-color: var(--third);
+  background-color: var(--third);
+  border-radius: 0;
+  font-weight: 500;
+  padding: 10px 30px;
+  color: var(--white);
+  background-image: linear-gradient(
+    100deg,
+    var(--third-hover) 50%,
+    var(--third) 50%
+  );
+  transition: all 0.5s ease;
+  background-size: 210% 100%;
+  background-position: 99% center;
+  background-repeat: no-repeat;
+}
+
+.btn.btn-secondary:hover,
+.btn.btn-secondary:active,
+.btn.btn-secondary:focus {
+  background-color: var(--third) !important;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.btn.btn-secondary:hover {
+  background-position: 0 center;
+}
+
+.bbva-tooltip .tooltip-inner {
+  background-color: var(--secondary-light);
+  color: var(--text);
+}
+
+.bbva-tooltip .tooltip-arrow::before {
+  border-top-color: var(--secondary-light);
+}

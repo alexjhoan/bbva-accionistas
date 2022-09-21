@@ -3,14 +3,14 @@
   width: 100%;
   z-index: 10;
   padding-top: 60px;
-  max-height: 0vh;
+  max-height: 0px;
   transition: all ease 0.5s;
   overflow: hidden;
 }
 
 #login.active {
   padding-top: 100px;
-  max-height: 100vh;
+  max-height: 600px;
 }
 
 #login .loginClose {
@@ -107,7 +107,7 @@
 
 #login .form-check-input:checked[type="checkbox"] {
   background-color: var(--white);
-  background-image: url(../../assets/img/icons/checkmark.svg);
+  background-image: url(../assets/img/icons/checkmark.svg);
 }
 
 #login .form-check-label {

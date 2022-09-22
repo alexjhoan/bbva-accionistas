@@ -15,7 +15,45 @@
     <section id="new_password">
       <div class="container">
         <div class="row">
-          <div class="col-12">form nueva contraseña</div>
+                    <div class="col-12">
+            <p class="h3 text-center">Cambio clave de acceso</p>
+            <div class="note-text">
+              <div class="img-symbol">
+                <img src="../assets/img/icons/exclamacion.svg" alt="">
+              </div>
+              <div class="text-request">
+                <p class="mb-4">Cree su nueva clave de acceso al portal de accionistas&#44; <span class="fw-bold">tenga en cuenta los siguientes requisitos&#58;</span></p>
+                <p class="mb-0">&#45;Debe tener 8 caracteres&#46;</p>
+                <p class="mb-0">&#45;Debe estar compuesta por caracteres alfanumericos&#46;</p>            
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <form>
+              <div class="form-floating mb-4">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="floatingNewPassword"
+                  placeholder="NewPassword"
+                />
+                <label for="floatingPassword">Nueva clave</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="floatingNewPasswordC"
+                  placeholder="NewPasswordC"
+                />
+                <label for="floatingPassword">Confirmar la nueva clave</label>
+              </div>
+              <div class="form-footer">
+                <button class="btn btn-primary">Cancelar</button>
+                <button class="btn btn-secondary">Siguiente</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>

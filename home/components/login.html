@@ -6,11 +6,18 @@
           <img src="../assets/img/icons/close.svg" alt="close" />
         </div>
         <p class="h3 text-center mb-3">&#161;Bienvenido!</p>
-        <form>
+        <!-- <form
+          id="formLogin"
+          method="post"
+          action="../AuthenticationServlet2"
+          autocomplete="off"
+        > -->
+        <form id="formLogin" method="post" autocomplete="off">
+          <!-- TODO: falta validacion de errores, encriptado y enmascarado de cedula -->
           <div class="form-group form-floating select-floating mb-3">
             <select
-              id="select_doc"
-              name="select_doc"
+              id="type_document"
+              name="type_document"
               class="from-control"
               tabindex="0"
               title="Selecciona el tipo de documento"
@@ -25,23 +32,39 @@
               </option>
             </select>
             <img src="../assets/img/icons/arrow-down.svg" alt="" />
-            <label for="select_doc">Tipo de documento</label>
+            <label for="type_document">Tipo de documento</label>
           </div>
           <div class="form-floating mb-3">
-            <input
+            <!-- <input
               type="tel"
               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
               class="form-control"
-              id="floatingInput"
+              id="document"
+              name="documento"
+              placeholder="Numero de documento"
+            /> -->
+            <input
+              type="tel"
+              class="form-control"
+              id="document"
+              name="documento"
               placeholder="Numero de documento"
             />
-            <label for="floatingInput">N&#250;mero de documento</label>
+            <label for="document">N&#250;mero de documento</label>
+            <input
+              type="hidden"
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+              name="identificacion"
+              id="documentHidden"
+              autocomplete="off"
+              maxlength="20"
+              value=""
+            />
           </div>
           <div class="form-check mb-3 bbva-checkbox">
             <input
               class="form-check-input"
               type="checkbox"
-              value=""
               id="flexCheckChecked"
             />
             <label class="form-check-label" for="flexCheckChecked">
@@ -63,14 +86,30 @@
               class="form-control"
               id="floatingPassword"
               placeholder="Password"
+              name="password"
+              maxlength="8"
             />
-            <label for="floatingPassword">Password</label>
+            <label for="floatingPassword">Clave de acceso</label>
+            <div id="labelEye" style="display: none">
+              <img
+                src="../assets/img/icons/icon-show-blue.png"
+                alt="show"
+                class="eyePassword"
+              />
+              <img
+                src="../assets/img/icons/icon-hide.png"
+                alt="hide"
+                class="eyePassword hidden"
+              />
+            </div>
           </div>
           <div class="form-footer">
             <a href="/home/recuperar_clave.html" color="primary">
               &#191;Olvidaste o bloqueaste tu contrase&#241;a?
             </a>
-            <button class="btn btn-primary">Enviar</button>
+            <button id="formSubmit" class="btn btn-primary" type="submit">
+              Enviar
+            </button>
           </div>
         </form>
       </div>

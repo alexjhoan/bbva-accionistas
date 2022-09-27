@@ -68,47 +68,28 @@ $(window).on("load", function () {
       console.log("noooo checked")
     }
   })
-  // setTimeout(() => {
-  //   const key = localStorage.getItem("type_document")
-  //   const doc = localStorage.getItem("document")
-  //   const decrypt = CryptoJS.AES.decrypt(doc, key).toString(CryptoJS.enc.Utf8)
-  //   const doct = atob(decrypt)
-  //   console.log(key)
-  //   console.log(doc)
-  //   console.log(decrypt)
-  //   console.log(doct)
-  //   if (localStorage.getItem("document")) {
-  //     $("#login #type_document").val(atob(key))
-  //     $("#login #document").val(doct)
-  //   } else {
-  //     console.log("no extite")
-  //   }
-  // }, 1000)
-
-  // let value
-  // $("#login #document").on("keydown", function (e) {
-  //   corre = false
-  //   if (e.key >= 0 && e.key <= 9) {
-  //     let mask = "*"
-  //     value != undefined ? (value += e.key) : (value = e.key)
-  //     for (let i = 1; i < value.length; i++) {
-  //       mask += "*"
-  //     }
-  //     $(this).val(mask)
-  //   }
-  //   if (e.keyCode == 8) {
-  //     if (value.length > 0) {
-  //       value = value.substring(0, value.length - 1)
-  //     }
-  //   }
-  //   console.log(value)
-  // })
-
-  // EnmascaraV2("document", "documentHidden", true)
+  $("#login .anotherAccount").click(function () {
+    localStorage.clear()
+    $(this).slideUp()
+    $("#fromDocument").slideDown()
+  })
+  function loadUser() {
+    if (localStorage.getItem("document")) {
+      $("#login #fromDocument").hide()
+      $("#login .anotherAccount").show()
+      const key = localStorage.getItem("type_document")
+      const doc = localStorage.getItem("document")
+      const decrypt = CryptoJS.AES.decrypt(doc, key).toString(CryptoJS.enc.Utf8)
+      const doct = atob(decrypt)
+      $("#login #type_document").val(atob(key))
+      $("#login #document").val(doct)
+    }
+  }
+  loadUser()
 })
 let det_document = setTimeout(
   'EnmascaraV2("document","documentHidden",true)',
-  10
+  50
 )
 
 function EnmascaraV2(CampoMask, CampoHidd, bolDes) {

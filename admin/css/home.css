@@ -1,0 +1,87 @@
+.cont {
+  margin-left: 8%;
+  margin-right: 8%;
+}
+.container_documents {
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+.container_documents .title {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.list_documents {
+  grid-template-columns: repeat(3, minmax(0, 250px));
+  display: grid;
+  justify-content: space-between;
+}
+.list_documents .icon-file {
+  width: 20px;
+  height: auto;
+}
+.list_documents .icon-download {
+  width: 14px;
+  height: auto;
+  margin-left: 8px;
+}
+.box_info {
+  margin-bottom: 40px;
+}
+.box_info .parrf {
+  margin: 0px;
+  margin-left: 15px;
+  font-size: 12px;
+  color: #626262;
+  position: relative;
+}
+.box_info .parrf2 {
+  margin-top: 20px;
+  height: 45px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+}
+.box_info a {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--secondary-dark) !important;
+  cursor: pointer;
+}
+
+.doc-button {
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+#show-more,
+#show-less {
+  background: none;
+  border: none;
+  margin-top: 8px;
+  font-size: 15px;
+}
+.hidden {
+  display: none;
+}
+.icon-show-more {
+  width: 14px;
+  height: auto;
+  margin-left: 10px;
+}
+.icon-remove {
+  width: 18px;
+  height: auto;
+}
+.info {
+  display: flex;
+  align-items: flex-end;
+}
+.delete-doc {
+  background: none;
+  border: none;
+  margin-left: 60px;
+}

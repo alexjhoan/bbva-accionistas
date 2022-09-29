@@ -89,6 +89,13 @@ img {
   background-position: 0 center;
 }
 
+.btn.btn-primary[disabled] {
+  background: #e9e9e9 !important;
+  color: #bdbdbd !important;
+  pointer-events: none;
+  border: none;
+}
+
 .btn.btn-secondary {
   border-color: var(--third);
   background-color: var(--third);
@@ -126,4 +133,16 @@ img {
 
 .bbva-tooltip .tooltip-arrow::before {
   border-top-color: var(--secondary-light);
+}
+.content #header h3 {
+  padding: 20px 20px 0 20px;
+  font-weight: 400;
+  margin: 0;
+}
+.content #header h3 strong {
+  font-weight: 500;
+}
+button:hover,
+button:focus {
+  outline: none;
 }

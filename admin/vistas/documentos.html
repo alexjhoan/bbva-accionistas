@@ -1,1 +1,45 @@
-<h1>Agregar documentos</h1>
+<div class="row">
+  <div class="col-12">
+    <div class="container_documents">
+      <h2 class="title2">Agregar Documentos</h2>
+      <p>
+        Cargar &uacute;nicamente en formato .PDF o .docx los documentos
+        disponibles para descargar.
+      </p>
+      <div class="file-drop-area">
+        <img src="../images/upload_files.png" alt="." class="imgInput" />
+        <span class="file-title">A&ntilde;adir documentos</span>
+        <span class="file-msg">
+          Arrastra y suelta los archivos aqu&iacute;
+        </span>
+        <span class="fake-btn">Seleccionar</span>
+        <form
+          name="formdoc"
+          action="cargaDocumento"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <input
+            class="file-input"
+            type="file"
+            accept=".pdf, .doc, .docx"
+            name="documento"
+            id="documento"
+          />
+        </form>
+      </div>
+    </div>
+    <div class="btn-doc">
+      <button
+        disabled
+        class="btn btn-primary"
+        id="previa"
+        onclick="enviarDoc()"
+      >
+        Previa Asamblea
+      </button>
+      <button disabled class="btn btn-primary">Post Asamblea</button>
+      <button disabled class="btn btn-primary">P&uacute;blico</button>
+    </div>
+  </div>
+</div>

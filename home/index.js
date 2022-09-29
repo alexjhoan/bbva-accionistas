@@ -9,8 +9,33 @@ $(window).on("load", function () {
   const tooltipList = [...tooltipTriggerList].map(
     (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
   )
+  new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      dynamicBullets: true,
+    },
+  })
+})
+
+$(window).on("load", function () {
+  const tooltipTriggerList = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]'
+  )
+  const tooltipList = [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+  )
   $(".activeLogin").click(function () {
-    $("#login").toggleClass("active")
+    const loginElement = document.getElementById("login")
+    loginElement.classList.toggle("active")
     window.scrollTo({ top: 0, behavior: "smooth" })
   })
   if (window.location.pathname.includes("clave")) {
@@ -74,22 +99,23 @@ $(window).on("load", function () {
     $("#fromDocument").slideDown()
   })
   function loadUser() {
+    const key = localStorage.getItem("type_document")
+    const doc = localStorage.getItem("document")
+    const decrypt = CryptoJS.AES.decrypt(doc, key).toString(CryptoJS.enc.Utf8)
+    const doct = atob(decrypt)
     if (localStorage.getItem("document")) {
-      $("#login #fromDocument").hide()
-      $("#login .anotherAccount").show()
-      const key = localStorage.getItem("type_document")
-      const doc = localStorage.getItem("document")
-      const decrypt = CryptoJS.AES.decrypt(doc, key).toString(CryptoJS.enc.Utf8)
-      const doct = atob(decrypt)
       $("#login #type_document").val(atob(key))
       $("#login #document").val(doct)
+    } else {
+      console.log("no extite")
     }
   }
   loadUser()
 })
+
 let det_document = setTimeout(
   'EnmascaraV2("document","documentHidden",true)',
-  50
+  10
 )
 
 function EnmascaraV2(CampoMask, CampoHidd, bolDes) {
@@ -99,8 +125,9 @@ function EnmascaraV2(CampoMask, CampoHidd, bolDes) {
   var objCHidd = document.getElementById(CampoHidd)
   var tempValIni = ""
   var tempValFin = ""
-  var LognMask = objCMask.value.length
+  var LognMask = objCMask ? objCMask.value.length : ""
   var CaulBol = bolDes ? LognMask : LognMask - 1
+  if (!objCMask) return
   var tamMask =
     objCMask.getAttribute("maxlength") > 0
       ? objCMask.getAttribute("maxlength") - 0

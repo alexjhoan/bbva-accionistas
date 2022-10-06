@@ -1,4 +1,27 @@
-<div class="container">
+<style>
+  .customInput {
+    position: relative;
+  }
+
+  /* .customInput input {
+    position: absolute;
+    background: transparent !important;
+    color: transparent !important;
+    caret-color: #000;
+  } */
+
+  .textInput {
+    background: #fff;
+    padding: 6px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    height: 38px;
+    width: 100%;
+    margin-bottom: 0;
+  }
+</style>
+
+<div class="container mt-5">
   <div class="row">
     <div class="col-12">
       <p>
@@ -6,31 +29,117 @@
       </p>
       <div class="containerBanner">
         <div class="editBtns">
-          <select name="numberBanner" id="numberBanner">
-            <option value="banner1">Banner 1</option>
-            <option value="banner2">Banner 2</option>
-            <option value="banner3">Banner 3</option>
-          </select>
-          <button class="btnBold"><strong>B</strong></button>
-          <!-- aqui va un collapse de bootstrap para los colores  -->
-        </div>
-        <div class="row">
-          <div class="col-7">
-            <input type="text" maxlength="80" />
-            <p class="textLenght"><span>0</span>/80</p>
+          <div>
+            <select name="numberBanner" id="numberBanner">
+              <option value="banner1">Banner 1</option>
+              <option value="banner2">Banner 2</option>
+              <option value="banner3">Banner 3</option>
+            </select>
           </div>
-          <div class="col-5">
-            <input type="text" maxlength="150" />
-            <p class="textLenght"><span>0</span>/80</p>
+          <div>
+            <button class="btnBold" onclick="styledText()">B</button>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn btn-link dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              A
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <button class="btn btn-primary">previsuaizar</button>
+        <div class="container-fluid editBannerContent">
+          <div class="row">
+            <div class="col-7">
+              <div class="d-flex justify-content-between aling-item-center">
+                <label for="inputTitle">Titulo</label>
+                <button class="btn btn-link p-0" onclick="changeInput(this)">
+                  <span>Personalizar</span> texto
+                </button>
+              </div>
+              <div class="customInput">
+                <input
+                  type="text"
+                  maxlength="80"
+                  id="inputTitle"
+                  name="inputTitle"
+                  class="form-control inputTextBanner"
+                />
+                <p class="textInput" style="display: none">
+                  prueba bbva provincial
+                </p>
+              </div>
+              <p class="textLength"><span>0</span>/80</p>
+            </div>
+            <div class="col-5">
+              <div class="d-flex justify-content-between aling-item-center">
+                <label for="inputTitle">Subtitulo</label>
+                <button class="btn btn-link p-0" onclick="changeInput(this)">
+                  <span>Personalizar</span> texto
+                </button>
+              </div>
+              <div class="customInput">
+                <input
+                  type="text"
+                  maxlength="150"
+                  id="inputSubTitle"
+                  name="inputTitle"
+                  class="form-control inputTextBanner"
+                />
+                <p class="textInput" style="display: none"></p>
+              </div>
+              <p class="textLength"><span>0</span>/150</p>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">input de arrastrar</div>
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-link p-0 mb-3" onclick="personalizar()">
+                Personalizar Titulo y Subtitulo
+              </button>
+              <div class="row" id="containerCostum" style="display: none">
+                <div class="col-7">
+                  <p id="titleBanner" class="textInput"></p>
+                </div>
+                <div class="col-5">
+                  <p id="subTitleBanner" class="textInput"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="col-12">
+              <button class="btn btn-primary">Previsuaizar</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="file-drop-area" id="file-drop-area">
+                <img
+                  src="/assets/img/icons/upload_files.png"
+                  alt="cargar documento"
+                  class="imgInput"
+                />
+                <span class="file-msg"
+                  >Arrastra y suelta los archivos aqui</span
+                >
+                <span class="fake-btn">Seleccionar</span>
+                <input
+                  class="file-input"
+                  type="file"
+                  name="bannerFile"
+                  id="bannerFile"
+                />
+              </div>
+              <div id="selectedFiles"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

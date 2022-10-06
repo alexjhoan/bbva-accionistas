@@ -1,0 +1,99 @@
+#banners .containerBanner {
+  background-color: var(--gray-light);
+  border: solid 1px var(--gray);
+}
+
+#banners .editBtns {
+  display: flex;
+  padding: 10px 0px;
+  border-bottom: solid 1px var(--gray);
+  align-items: center;
+}
+
+#banners .editBtns > * {
+  padding: 0 10px;
+  border-right: solid 1px var(--gray);
+}
+
+#banners #numberBanner {
+  background-color: transparent;
+  border: transparent;
+  font-weight: 700;
+  padding: 5px 16px;
+  cursor: pointer;
+}
+
+#banners .btnBold {
+  font-weight: 700;
+  background-color: transparent;
+  border: transparent;
+}
+
+#banners .btnBold:active {
+  background-color: var(--gray);
+}
+
+#banners .dropdown-toggle {
+  color: var(--text);
+  font-weight: 700;
+  box-shadow: none !important;
+  padding: 0 5px;
+}
+
+#banners .editBannerContent {
+  padding: 16px 32px 20px;
+}
+
+#banners .editBannerContent .textLength {
+  text-align: right;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+#banners .file-drop-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 4px);
+  padding: 25px 0;
+  border: 2px solid var(--gray);
+  border-radius: 3px;
+  transition: 0.2s;
+  margin-top: 30px;
+}
+#banners .file-drop-area.onbox {
+  opacity: 0.5;
+  border: 2px solid var(--gray-dark);
+}
+#banners .file-drop-area img.imgInput {
+  height: 100px;
+  width: auto;
+  left: 0;
+  top: 0;
+}
+#banners .fake-btn {
+  flex-shrink: 0;
+  background-color: #028484;
+  border: none;
+  border-radius: 1px;
+  padding: 8px 15px;
+  font-size: 15px;
+  color: #fff;
+}
+
+#banners #selectedFiles {
+  padding-top: 20px;
+}
+
+#banners #selectedFiles p {
+  display: flex;
+  justify-content: space-between;
+}
+
+#banners #selectedFiles p img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

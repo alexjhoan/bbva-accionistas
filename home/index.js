@@ -9,30 +9,6 @@ $(window).on("load", function () {
   const tooltipList = [...tooltipTriggerList].map(
     (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
   )
-  new Swiper(".mySwiper", {
-    loop: true,
-    autoplay: {
-      delay: 5000,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-    },
-  })
-})
-
-$(window).on("load", function () {
-  const tooltipTriggerList = document.querySelectorAll(
-    '[data-bs-toggle="tooltip"]'
-  )
-  const tooltipList = [...tooltipTriggerList].map(
-    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-  )
   $(".activeLogin").click(function () {
     const loginElement = document.getElementById("login")
     loginElement.classList.toggle("active")
@@ -80,7 +56,8 @@ $(window).on("load", function () {
     }
   })
   $("#formLogin").on("submit", function (e) {
-    e.preventDefault()
+    console.log("init ------")
+    //e.preventDefault()
     if ($("#flexCheckChecked").is(":checked")) {
       const typeDocument = $("#login #type_document").val()
       const document = $("#login #document").val()
@@ -89,9 +66,15 @@ $(window).on("load", function () {
       const encript = CryptoJS.AES.encrypt(hashDocument, hashTypeDocument)
       localStorage.setItem("type_document", hashTypeDocument)
       localStorage.setItem("document", encript)
-    } else {
-      console.log("noooo checked")
     }
+
+    const iden = $("#documentHidden").val()
+    const pass = $("#floatingPassword").val()
+    const idenHash = btoa(iden)
+    const passHash = btoa(pass)
+
+    document.getElementById("documentHidden").value = idenHash
+    document.getElementById("floatingPassword").value = passHash
   })
   $("#login .anotherAccount").click(function () {
     localStorage.clear()
@@ -99,15 +82,13 @@ $(window).on("load", function () {
     $("#fromDocument").slideDown()
   })
   function loadUser() {
-    const key = localStorage.getItem("type_document")
-    const doc = localStorage.getItem("document")
-    const decrypt = CryptoJS.AES.decrypt(doc, key).toString(CryptoJS.enc.Utf8)
-    const doct = atob(decrypt)
     if (localStorage.getItem("document")) {
+      const key = localStorage.getItem("type_document")
+      const doc = localStorage.getItem("document")
+      const decrypt = CryptoJS.AES.decrypt(doc, key).toString(CryptoJS.enc.Utf8)
+      const doct = atob(decrypt)
       $("#login #type_document").val(atob(key))
       $("#login #document").val(doct)
-    } else {
-      console.log("no extite")
     }
   }
   loadUser()

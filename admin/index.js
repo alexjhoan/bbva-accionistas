@@ -6,101 +6,113 @@ $("div#documentos").load("vistas/documentos.html")
 $("div#streaming").load("vistas/streaming.html")
 
 $(window).on("load", function () {
-  $("#sidebar li").click(function () {
-    const url = $(this).data("url")
-    $(this).addClass("active").siblings().removeClass("active")
-    $(`#page .content`).children().not("#header").hide()
-    $(`#page .content #${url}`).show()
-  })
-  var cantidad = []
-  $(".control").each(function (i) {
-    cantidad[i] = $(this).attr("id")
-  })
+  setTimeout(() => {
+    $("#sidebar li").click(function () {
+      const url = $(this).data("url")
+      $(this).addClass("active").siblings().removeClass("active")
+      $(`#page .content`).children().not("#header").hide()
+      $(`#page .content #${url}`).show()
+    })
+    var cantidad = []
+    $(".control").each(function (i) {
+      cantidad[i] = $(this).attr("id")
+    })
 
-  for (k = 0; k < cantidad.length; k++) {
-    if (k > 5) {
-      $("#" + cantidad[k]).addClass("hidden")
-    }
-  }
-  var click = 0
-  var cant_post = cantidad.length / 2
-  var cant_post = Math.trunc(cant_post)
-  $("#show-more").click(function () {
-    var cont = 6
-    click++
-    for (k = 0; k < cantidad.length; k++) {
-      if ($("#" + cantidad[k]).hasClass("hidden") && cont > 0) {
-        $("#" + cantidad[k]).removeClass("hidden")
-        cont--
-      }
-    }
-    var cant_click = cant_post / 6
-    var cant_click = Math.trunc(cant_click)
-    if (click > cant_click) {
-      $("#show-more").addClass("hidden")
-      $("#show-less").removeClass("hidden")
-    }
-  })
-  $("#show-less").click(function () {
     for (k = 0; k < cantidad.length; k++) {
       if (k > 5) {
         $("#" + cantidad[k]).addClass("hidden")
       }
     }
-    $("#show-less").addClass("hidden")
-    $("#show-more").removeClass("hidden")
-    click = 0
-  })
-  $('input[type="file"]').on("change", function () {
-    var ext = $(this).val().split(".").pop()
-    if ($(this).val() != "") {
-      if ($("#myalert").hasClass("activa")) {
-        hideAlert()
+    var click = 0
+    var cant_post = cantidad.length / 2
+    var cant_post = Math.trunc(cant_post)
+    $("#show-more").click(function () {
+      var cont = 6
+      click++
+      for (k = 0; k < cantidad.length; k++) {
+        if ($("#" + cantidad[k]).hasClass("hidden") && cont > 0) {
+          $("#" + cantidad[k]).removeClass("hidden")
+          cont--
+        }
       }
-      if (ext == "pdf" || ext == "doc" || ext == "docx") {
-        if ($(this)[0].files[0].size > 1048576) {
+      var cant_click = cant_post / 6
+      var cant_click = Math.trunc(cant_click)
+      if (click > cant_click) {
+        $("#show-more").addClass("hidden")
+        $("#show-less").removeClass("hidden")
+      }
+    })
+    $("#show-less").click(function () {
+      for (k = 0; k < cantidad.length; k++) {
+        if (k > 5) {
+          $("#" + cantidad[k]).addClass("hidden")
+        }
+      }
+      $("#show-less").addClass("hidden")
+      $("#show-more").removeClass("hidden")
+      click = 0
+    })
+    $('input[type="file"]').on("change", function () {
+      var ext = $(this).val().split(".").pop()
+      if ($(this).val() != "") {
+        if ($("#myalert").hasClass("activa")) {
+          hideAlert()
+        }
+        if (ext == "pdf" || ext == "doc" || ext == "docx") {
+          if ($(this)[0].files[0].size > 1048576) {
+            showAlert(
+              "El documento excede el tama&ntilde;o m&aacute;ximo",
+              "alert-danger",
+              "error"
+            )
+            $(this).val("")
+          } else {
+            $(".btn-primary").prop("disabled", false)
+          }
+        } else {
+          $(this).val("")
           showAlert(
-            "El documento excede el tama&ntilde;o m&aacute;ximo",
+            "Los tipos de documentos permitidos son (.PDF o .docx)",
             "alert-danger",
             "error"
           )
-          $(this).val("")
-        } else {
-          $(".btn-primary").prop("disabled", false)
+          $(".btn-primary").prop("disabled", true)
+        }
+      }
+    })
+    const container = document.getElementById("file-drop-area")
+    const containerFiles = document.getElementById("selectedFiles")
+    const input = document.getElementById("bannerFile")
+    $(input).on("dragenter dragleave", function () {
+      container.classList.toggle("onbox")
+    })
+    $(input).on("change", function () {
+      const fileName = input.files[0].name
+      container.classList.remove("onbox")
+      containerFiles.innerHTML = `<p> ${fileName}<img src='/assets/img/icons/close-01.png' class='fileClose' id='removeItemInput' /></p>`
+      $("#removeItemInput").click(function () {
+        input.value = ""
+        containerFiles.innerHTML = ""
+      })
+    })
+    $(".inputTextBanner").on("keydown", function (e) {
+      if ($(this).data("type") == "title") {
+        if (e.keyCode != 8 && this.innerText.length > 79) {
+          e.preventDefault()
         }
       } else {
-        $(this).val("")
-        showAlert(
-          "Los tipos de documentos permitidos son (.PDF o .docx)",
-          "alert-danger",
-          "error"
-        )
-        $(".btn-primary").prop("disabled", true)
+        if (e.keyCode != 8 && this.innerText.length > 149) {
+          e.preventDefault()
+        }
       }
-    }
-  })
-  const container = document.getElementById("file-drop-area")
-  const containerFiles = document.getElementById("selectedFiles")
-  const input = document.getElementById("bannerFile")
-  $(input).on("dragenter dragleave", function () {
-    container.classList.toggle("onbox")
-  })
-  $(input).on("change", function () {
-    const fileName = input.files[0].name
-    container.classList.remove("onbox")
-    containerFiles.innerHTML = `<p> ${fileName}<img src='/assets/img/icons/close-01.png' class='fileClose' id='removeItemInput' /></p>`
-    $("#removeItemInput").click(function () {
-      input.value = ""
-      containerFiles.innerHTML = ""
     })
-  })
-  $(".inputTextBanner").on("keyup", function () {
-    $(this)
-      .parent()
-      .siblings(".textLength")
-      .children("span")
-      .text(this.value.length)
-  })
+    $(".inputTextBanner").on("keyup", function (e) {
+      $(this)
+        .siblings(".textLength")
+        .children("span")
+        .text($(this).text().length)
+    })
+  }, 50)
 })
 
 var divAlert = document.getElementById("myalert")
@@ -142,37 +154,70 @@ function enviarDoc() {
   }
 }
 
-function styledText() {
+function styledWeight2() {
   const range = window.getSelection().getRangeAt(0)
-  if (range.commonAncestorContainer.parentElement.className == "textInput") {
+  console.log(window.getSelection())
+  console.log(window.getSelection().anchorNode.parentNode.nodeName)
+  // console.log(window.getSelection().focusNode)
+  // console.log(window.getSelection().focusNode)
+  // console.log(window.getSelection().toString())
+  // console.log(range.toString())
+
+  if (
+    window
+      .getSelection()
+      .anchorNode.parentNode.className.includes("inputTextBanner")
+  ) {
     const span = document.createElement("span")
     span.style.fontWeight = 700
     span.appendChild(range.extractContents())
-    range.insertNode(span)
+    window.getSelection().getRangeAt(0).insertNode(span)
+    window.getSelection().removeAllRanges()
+    // if (window.getSelection().anchorNode.parentNode.nodeName != "SPAN") {
+    //   console.log("first")
+    // } else {
+    //   // const span = document.createElement("span")
+    //   console.log("blaaaaa")
+    //   console.log(window.getSelection().anchorNode.parentNode)
+    //   window
+    //     .getSelection()
+    //     .anchorNode.parentNode.parentNode.removeChild(
+    //       window.getSelection().anchorNode.parentNode
+    //     )
+
+    // window.getSelection().anchorNode.parentNode.deleteFromDocument()
+    // window.getSelection().removeAllRanges()
+    // }
   }
 }
 
-// TODO: queda pendiente que la funcion detecte donde esta y solo afecte a los hijos
-
-function changeInput(item) {
-  if ($("span", item).text() == "Personalizar") {
-    $("span", item).text("Editar")
-    $(item).parent().siblings(".customInput").children("textInput")
-    $("#inputTitle").slideUp()
-    $(".textInput").slideDown()
-  } else {
-    $("span", item).text("Personalizar")
-    $("#inputTitle").slideDown()
-    $(".textInput").slideUp()
+function styledWeight() {
+  const selection = window.getSelection()
+  const text = selection.toString()
+  const parent = $(selection.focusNode.parentElement)
+  console.log($(selection.focusNode).parents(".inputTextBanner"))
+  if ($(selection.focusNode).parents(".inputTextBanner").length > 0) {
+    if (parent.prop("tagName") != "SPAN") {
+      const oldHtml = parent.html()
+      const newHtml = oldHtml.replace(
+        text,
+        `<span style="font-weight: 700;">${text}</span>`
+      )
+      parent.html(newHtml)
+    } else {
+      const parent2 = $(selection.focusNode.parentElement.parentElement)
+      const oldHtml = parent2.html()
+      const newHtml = oldHtml.replace(
+        `<span style="font-weight: 700;">${text}</span>`,
+        text
+      )
+      parent2.html(newHtml)
+    }
   }
+  // window.getSelection().removeAllRanges()
 }
 
-function personalizar() {
-  $("#titleBanner").text($("#inputTitle").val())
-  $("#subTitleBanner").text($("#inputSubTitle").val())
-  if ($(containerCostum).css("display") == "none") {
-    $("#containerCostum").slideDown()
-  } else {
-    $("#containerCostum").slideUp()
-  }
+function resetText(type) {
+  const originalText = $(`.inputTextBanner[data-type=${type}]`).text()
+  $(`.inputTextBanner[data-type=${type}]`).text(originalText)
 }

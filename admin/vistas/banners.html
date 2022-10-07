@@ -3,13 +3,6 @@
     position: relative;
   }
 
-  /* .customInput input {
-    position: absolute;
-    background: transparent !important;
-    color: transparent !important;
-    caret-color: #000;
-  } */
-
   .textInput {
     background: #fff;
     padding: 6px 10px;
@@ -37,7 +30,7 @@
             </select>
           </div>
           <div>
-            <button class="btnBold" onclick="styledText()">B</button>
+            <button class="btnBold" onclick="styledWeight()">B</button>
           </div>
           <div class="dropdown">
             <button
@@ -48,69 +41,54 @@
             >
               A
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <div class="dropdown-menu">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
         </div>
         <div class="container-fluid editBannerContent">
           <div class="row">
             <div class="col-7">
-              <div class="d-flex justify-content-between aling-item-center">
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
                 <label for="inputTitle">Titulo</label>
-                <button class="btn btn-link p-0" onclick="changeInput(this)">
-                  <span>Personalizar</span> texto
+                <button
+                  class="btn btn-primary py-1"
+                  onclick="resetText('title')"
+                >
+                  reset
                 </button>
               </div>
-              <div class="customInput">
-                <input
-                  type="text"
-                  maxlength="80"
-                  id="inputTitle"
-                  name="inputTitle"
-                  class="form-control inputTextBanner"
-                />
-                <p class="textInput" style="display: none">
-                  prueba bbva provincial
-                </p>
-              </div>
+              <p
+                data-type="title"
+                contenteditable="true"
+                class="form-control inputTextBanner mb-0"
+              >
+                hola como te va
+              </p>
               <p class="textLength"><span>0</span>/80</p>
             </div>
             <div class="col-5">
-              <div class="d-flex justify-content-between aling-item-center">
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
                 <label for="inputTitle">Subtitulo</label>
-                <button class="btn btn-link p-0" onclick="changeInput(this)">
-                  <span>Personalizar</span> texto
+                <button
+                  class="btn btn-primary py-1"
+                  onclick="resetText('sub-title')"
+                >
+                  reset
                 </button>
               </div>
-              <div class="customInput">
-                <input
-                  type="text"
-                  maxlength="150"
-                  id="inputSubTitle"
-                  name="inputTitle"
-                  class="form-control inputTextBanner"
-                />
-                <p class="textInput" style="display: none"></p>
-              </div>
+              <p
+                data-type="sub-title"
+                contenteditable="true"
+                class="form-control inputTextBanner mb-0"
+              ></p>
               <p class="textLength"><span>0</span>/150</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <button class="btn btn-link p-0 mb-3" onclick="personalizar()">
-                Personalizar Titulo y Subtitulo
-              </button>
-              <div class="row" id="containerCostum" style="display: none">
-                <div class="col-7">
-                  <p id="titleBanner" class="textInput"></p>
-                </div>
-                <div class="col-5">
-                  <p id="subTitleBanner" class="textInput"></p>
-                </div>
-              </div>
             </div>
           </div>
           <div class="row pt-3">

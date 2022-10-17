@@ -153,7 +153,29 @@ function enviarDoc() {
     $(".btn-primary").prop("disabled", true)
   }
 }
-
+function EnviarForm(id) {
+  document.getElementById("boton_o" + id).click()
+}
+var mostrarAlert = true
+function downloadReport() {
+  var error = document.getElementById("Reporterror")
+  if (error.value == "El archivo no existe") {
+    if (mostrarAlert == true) {
+      showAlert(
+        "El reporte no esta disponible en este momento, por favor intente  más tarde",
+        "alert-danger",
+        "error"
+      )
+    }
+    mostrarAlert = false
+  } else {
+    var link = "ReporteServlet?action=quorum"
+    $("#reporteQuorum").attr("href", link)
+  }
+  setTimeout(function () {
+    hideAlert()
+  }, 8000)
+}
 function styledWeight2() {
   const range = window.getSelection().getRangeAt(0)
   console.log(window.getSelection())
@@ -191,30 +213,85 @@ function styledWeight2() {
   }
 }
 
-function styledWeight() {
+function styledInput(typeStyle) {
   const selection = window.getSelection()
-  const text = selection.toString()
-  const parent = $(selection.focusNode.parentElement)
-  console.log($(selection.focusNode).parents(".inputTextBanner"))
+  const range = selection.getRangeAt(0)
+  const parent = selection.focusNode.parentElement
+
   if ($(selection.focusNode).parents(".inputTextBanner").length > 0) {
-    if (parent.prop("tagName") != "SPAN") {
-      const oldHtml = parent.html()
-      const newHtml = oldHtml.replace(
-        text,
-        `<span style="font-weight: 700;">${text}</span>`
-      )
-      parent.html(newHtml)
+    if (typeStyle == "bold") {
+      if (!parent.style.fontWeight) {
+        const span = document.createElement("span")
+        span.style.fontWeight = 700
+        range.surroundContents(span)
+        // span.appendChild(range.extractContents())
+        // range.insertNode(span)
+      } else {
+        // const selec = selection.anchorNode.parentElement.outerHTML
+        const selec = selection.anchorNode.parentElement.innerHTML
+
+        const gparent = $(parent).parent().html()
+
+        const text = gparent.replace(
+          `<span style="font-weight: 700;">${selec}</span>`,
+          selec
+        )
+        parent.parentElement.innerHTML = text
+      }
     } else {
-      const parent2 = $(selection.focusNode.parentElement.parentElement)
-      const oldHtml = parent2.html()
-      const newHtml = oldHtml.replace(
-        `<span style="font-weight: 700;">${text}</span>`,
-        text
-      )
-      parent2.html(newHtml)
+      if (!parent.style.color) {
+        const span = document.createElement("span")
+        span.style.color = typeStyle
+        range.surroundContents(span)
+        // span.appendChild(range.extractContents())
+        // range.insertNode(span)
+      } else {
+        const selec = selection.anchorNode.parentElement
+        selec.style.color = typeStyle
+      }
     }
   }
-  // window.getSelection().removeAllRanges()
+  window.getSelection().removeAllRanges()
+}
+
+function styledInput_original(typeStyle) {
+  const selection = window.getSelection()
+  const range = selection.getRangeAt(0).cloneContents().toString()
+  const text = selection.toString()
+  console.log(range)
+  console.log(text)
+  const parent = $(selection.focusNode.parentElement)
+  if ($(selection.focusNode).parents(".inputTextBanner").length > 0) {
+    if (typeStyle == "bold") {
+      if (parent.prop("tagName") != "SPAN") {
+        const oldHtml = parent.html()
+        const newHtml = oldHtml.replace(
+          text,
+          `<span style="font-weight: 700;">${text}</span>`
+        )
+        parent.html(newHtml)
+      } else {
+        const oldHtml = parent.parent().html()
+        const newHtml = oldHtml.replace(
+          `<span style="font-weight: 700;">${text}</span>`,
+          text
+        )
+        parent.parent().html(newHtml)
+      }
+    } else {
+      if (parent.prop("tagName") != "SPAN") {
+        const oldHtml = parent.html()
+        const newHtml = oldHtml.replace(
+          text,
+          `<span style="color: ${typeStyle}">${text}</span>`
+        )
+        parent.html(newHtml)
+      } else {
+        parent.html(`<span style="color: ${typeStyle}">${text}</span>`)
+      }
+    }
+  }
+  window.getSelection().removeAllRanges()
 }
 
 function resetText(type) {

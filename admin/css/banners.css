@@ -15,6 +15,38 @@
   border-right: solid 1px var(--gray);
 }
 
+#banners .customInput {
+  position: relative;
+}
+
+#banners .textInput {
+  background: #fff;
+  padding: 6px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  height: 38px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+#banners .dropdown-menu {
+  grid-template-columns: repeat(3, 1fr);
+  min-width: 0;
+  padding: 10px;
+  gap: 10px;
+}
+
+#banners .dropdown-menu.show {
+  display: grid;
+}
+
+#banners .dropdown-menu .drop-item {
+  height: 20px;
+  width: 20px;
+  border: solid 1px var(--gray);
+  cursor: pointer;
+}
+
 #banners #numberBanner {
   background-color: transparent;
   border: transparent;

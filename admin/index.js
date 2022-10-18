@@ -10,7 +10,7 @@ $(window).on("load", function () {
     $("#sidebar li").click(function () {
       const url = $(this).data("url")
       $(this).addClass("active").siblings().removeClass("active")
-      $(`#page .content`).children().not("#header").hide()
+      $(`#page .content`).children().not("#header,  #myalert").hide()
       $(`#page .content #${url}`).show()
     })
     var cantidad = []
@@ -52,7 +52,10 @@ $(window).on("load", function () {
       $("#show-more").removeClass("hidden")
       click = 0
     })
-    $('input[type="file"]').on("change", function () {
+    if (cantidad.length <= 6) {
+      $("#show-more").addClass("hidden")
+    }
+    $("#documento").on("change", function () {
       var ext = $(this).val().split(".").pop()
       if ($(this).val() != "") {
         if ($("#myalert").hasClass("activa")) {
@@ -66,6 +69,7 @@ $(window).on("load", function () {
               "error"
             )
             $(this).val("")
+            $(".btn-primary").prop("disabled", true)
           } else {
             $(".btn-primary").prop("disabled", false)
           }
@@ -80,7 +84,7 @@ $(window).on("load", function () {
         }
       }
     })
-    const container = document.getElementById("file-drop-area")
+    const container = document.getElementById("input-drop-img-banner")
     const containerFiles = document.getElementById("selectedFiles")
     const input = document.getElementById("bannerFile")
     $(input).on("dragenter dragleave", function () {
@@ -93,7 +97,9 @@ $(window).on("load", function () {
       $("#removeItemInput").click(function () {
         input.value = ""
         containerFiles.innerHTML = ""
+        bannerPreviewRemove()
       })
+      bannerPreview()
     })
     $(".inputTextBanner").on("keydown", function (e) {
       if ($(this).data("type") == "title") {
@@ -113,23 +119,24 @@ $(window).on("load", function () {
         .text($(this).text().length)
     })
   }, 50)
+  alerts()
 })
 
 var divAlert = document.getElementById("myalert")
 function showAlert(message, type, typeimg) {
   if (typeimg === "error") {
-    iconoSrc = "../assets/img/icons/warning.svg"
+    iconoSrc = "/assets/img/icons/warning.svg"
   } else if (typeimg === "info") {
-    iconoSrc = "../assets/img/icons/check.svg"
+    iconoSrc = "/assets/img/icons/check.svg"
   } else if (typeimg === "success") {
-    iconoSrc = "../assets/img/icons/delete-doc.svg"
+    iconoSrc = "/assets/img/icons/delete-doc.svg"
   }
 
   $("#myalert").show()
   $("#myalert").addClass("activa")
   var wrapper = `
   					<div class="alert  ${type}    role="alert">
-  						<img class="icon-alert" src="${iconoSrc}"/>
+  						<img class="icon-alert" src="${myContextPath}${iconoSrc}"/>
   						<p class="alert-msj"> ${message} </p>
   						
   					</div>
@@ -139,35 +146,48 @@ function showAlert(message, type, typeimg) {
 }
 function hideAlert() {
   $("#myalert").hide()
+  $("#myalert").removeClass("activa")
   divAlert.innerHTML = ""
+  mostrarAlert = true
+}
+function alerts() {
+  var error = document.getElementById("error").value
+  var exito = document.getElementById("exito").value
+  if (exito != "null") {
+    if (exito == "Documento eliminado correctamente") {
+      showAlert(exito, "alert-success", "success")
+    } else {
+      showAlert(exito, "alert-success", "info")
+    }
+  }
+  if (error != "null") {
+    showAlert(error, "alert-danger", "error")
+  }
+  setTimeout(function () {
+    hideAlert()
+  }, 8000)
+}
+function CrearDoc(tipo) {
+  let tipodoc = document.getElementById("tipodoc")
+  tipodoc.value = tipo
+  formdoc.submit()
 }
 
-function enviarDoc() {
-  let input = document.getElementById("documento")
-  if (input.files.length == 1) {
-    //document.formdoc.submit();
-    $(".btn-primary").prop("disabled", true)
-    showAlert("Documento cargado correctamente", "alert-success", "info")
-    //input.value="";
-  } else {
-    $(".btn-primary").prop("disabled", true)
-  }
-}
 function EnviarForm(id) {
   document.getElementById("boton_o" + id).click()
 }
-var mostrarAlert = true
+//var mostrarAlert = true
 function downloadReport() {
   var error = document.getElementById("Reporterror")
   if (error.value == "El archivo no existe") {
-    if (mostrarAlert == true) {
-      showAlert(
-        "El reporte no esta disponible en este momento, por favor intente  más tarde",
-        "alert-danger",
-        "error"
-      )
-    }
-    mostrarAlert = false
+    //if (mostrarAlert == true) {
+    showAlert(
+      "El reporte no esta disponible en este momento, por favor intente  más tarde",
+      "alert-danger",
+      "error"
+    )
+    //}
+    //mostrarAlert = false
   } else {
     var link = "ReporteServlet?action=quorum"
     $("#reporteQuorum").attr("href", link)
@@ -176,62 +196,48 @@ function downloadReport() {
     hideAlert()
   }, 8000)
 }
-function styledWeight2() {
-  const range = window.getSelection().getRangeAt(0)
-  console.log(window.getSelection())
-  console.log(window.getSelection().anchorNode.parentNode.nodeName)
-  // console.log(window.getSelection().focusNode)
-  // console.log(window.getSelection().focusNode)
-  // console.log(window.getSelection().toString())
-  // console.log(range.toString())
-
-  if (
-    window
-      .getSelection()
-      .anchorNode.parentNode.className.includes("inputTextBanner")
-  ) {
-    const span = document.createElement("span")
-    span.style.fontWeight = 700
-    span.appendChild(range.extractContents())
-    window.getSelection().getRangeAt(0).insertNode(span)
-    window.getSelection().removeAllRanges()
-    // if (window.getSelection().anchorNode.parentNode.nodeName != "SPAN") {
-    //   console.log("first")
-    // } else {
-    //   // const span = document.createElement("span")
-    //   console.log("blaaaaa")
-    //   console.log(window.getSelection().anchorNode.parentNode)
-    //   window
-    //     .getSelection()
-    //     .anchorNode.parentNode.parentNode.removeChild(
-    //       window.getSelection().anchorNode.parentNode
-    //     )
-
-    // window.getSelection().anchorNode.parentNode.deleteFromDocument()
-    // window.getSelection().removeAllRanges()
-    // }
+function confirmar(nombre, id) {
+  window.location.href = "DocumentoServlet?id=" + id
+  return false
+}
+function bannerPreview() {
+  const inputImg = document.querySelector("#bannerFile")
+  if (inputImg.files.length > 0) {
+    const imgPreview = URL.createObjectURL(inputImg.files[0])
+    const inputTitle = $(`.inputTextBanner[data-type="title"`).html()
+    const inputSubTitle = $(`.inputTextBanner[data-type="sub-title"`).html()
+    $("#bannerPreview img").attr("src", imgPreview)
+    $("#bannerPreview-title").html(inputTitle)
+    $("#bannerPreview-subTitle").html(inputSubTitle)
+    $("#bannerPreview").fadeIn()
+  } else {
+    showAlert(
+      "Seleccione una imagen para previsualizar",
+      "alert-danger",
+      "error"
+    )
   }
 }
 
+function bannerPreviewRemove() {
+  $("#bannerPreview img").attr("src", "")
+  $("#bannerPreview-title").html("")
+  $("#bannerPreview-subTitle").html("")
+  $("#bannerPreview").hide()
+}
 function styledInput(typeStyle) {
   const selection = window.getSelection()
   const range = selection.getRangeAt(0)
   const parent = selection.focusNode.parentElement
-
   if ($(selection.focusNode).parents(".inputTextBanner").length > 0) {
     if (typeStyle == "bold") {
       if (!parent.style.fontWeight) {
         const span = document.createElement("span")
         span.style.fontWeight = 700
         range.surroundContents(span)
-        // span.appendChild(range.extractContents())
-        // range.insertNode(span)
       } else {
-        // const selec = selection.anchorNode.parentElement.outerHTML
         const selec = selection.anchorNode.parentElement.innerHTML
-
         const gparent = $(parent).parent().html()
-
         const text = gparent.replace(
           `<span style="font-weight: 700;">${selec}</span>`,
           selec
@@ -243,8 +249,6 @@ function styledInput(typeStyle) {
         const span = document.createElement("span")
         span.style.color = typeStyle
         range.surroundContents(span)
-        // span.appendChild(range.extractContents())
-        // range.insertNode(span)
       } else {
         const selec = selection.anchorNode.parentElement
         selec.style.color = typeStyle
@@ -252,46 +256,7 @@ function styledInput(typeStyle) {
     }
   }
   window.getSelection().removeAllRanges()
-}
-
-function styledInput_original(typeStyle) {
-  const selection = window.getSelection()
-  const range = selection.getRangeAt(0).cloneContents().toString()
-  const text = selection.toString()
-  console.log(range)
-  console.log(text)
-  const parent = $(selection.focusNode.parentElement)
-  if ($(selection.focusNode).parents(".inputTextBanner").length > 0) {
-    if (typeStyle == "bold") {
-      if (parent.prop("tagName") != "SPAN") {
-        const oldHtml = parent.html()
-        const newHtml = oldHtml.replace(
-          text,
-          `<span style="font-weight: 700;">${text}</span>`
-        )
-        parent.html(newHtml)
-      } else {
-        const oldHtml = parent.parent().html()
-        const newHtml = oldHtml.replace(
-          `<span style="font-weight: 700;">${text}</span>`,
-          text
-        )
-        parent.parent().html(newHtml)
-      }
-    } else {
-      if (parent.prop("tagName") != "SPAN") {
-        const oldHtml = parent.html()
-        const newHtml = oldHtml.replace(
-          text,
-          `<span style="color: ${typeStyle}">${text}</span>`
-        )
-        parent.html(newHtml)
-      } else {
-        parent.html(`<span style="color: ${typeStyle}">${text}</span>`)
-      }
-    }
-  }
-  window.getSelection().removeAllRanges()
+  bannerPreview()
 }
 
 function resetText(type) {

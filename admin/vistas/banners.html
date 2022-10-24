@@ -5,118 +5,186 @@
         Editar el titulo, la imagen y el que deseas que aparezca en el banner.
       </p>
       <div class="containerBanner">
-        <div class="editBtns">
-          <div>
-            <select name="numberBanner" id="numberBanner">
-              <option value="banner1">Banner 1</option>
-              <option value="banner2">Banner 2</option>
-              <option value="banner3">Banner 3</option>
-            </select>
-          </div>
-          <div>
-            <button class="btnBold" onclick="styledInput('bold')">B</button>
-          </div>
-          <div class="dropdown">
-            <button
-              class="btn btn-link dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              A
-            </button>
-            <div class="dropdown-menu">
-              <button
-                class="drop-item"
-                style="background-color: #2dcccd"
-                onclick="styledInput('#2dcccd')"
-              ></button>
-              <button
-                class="drop-item"
-                style="background-color: #ffffff"
-                onclick="styledInput('#ffffff')"
-              ></button>
-              <button
-                class="drop-item"
-                style="background-color: #5bbeff"
-                onclick="styledInput('#5bbeff')"
-              ></button>
-              <button
-                class="drop-item"
-                style="background-color: #f8cd51"
-                onclick="styledInput('#f8cd51')"
-              ></button>
-              <button
-                class="drop-item"
-                style="background-color: #043263"
-                onclick="styledInput('#043263')"
-              ></button>
-              <button
-                class="drop-item"
-                style="background-color: #121212"
-                onclick="styledInput('#121212')"
-              ></button>
-              <button
-                class="drop-item"
-                style="background-color: #004481"
-                onclick="styledInput('#004481')"
-              ></button>
-            </div>
-          </div>
-        </div>
-        <div class="container-fluid editBannerContent">
-          <div class="row">
-            <div class="col-7">
-              <div
-                class="d-flex justify-content-between align-items-center mb-2"
+        <form name="formularioBanner" method="post" action="NoticiasServlet">
+          <input
+            type="hidden"
+            id="titleBannerHidden"
+            name="titleBannerHidden"
+            value=""
+          />
+          <input
+            type="hidden"
+            id="subtitleBannerHidden"
+            name="subtitleBannerHidden"
+            value=""
+          />
+          <input
+            type="hidden"
+            id="action"
+            name="action"
+            value="guardarBanner"
+          />
+          <input type="hidden" id="verBanner" name="verBanner" value="" />
+          <div class="editBtns">
+            <div>
+              <select
+                name="numberBanner"
+                id="numberBanner"
+                onchange="verbanner()"
               >
-                <label for="inputTitle">Titulo</label>
-                <button
-                  class="btn btn-primary py-1"
-                  onclick="resetText('title')"
-                >
-                  reset
-                </button>
-              </div>
-              <p
-                data-type="title"
-                contenteditable="true"
-                class="form-control inputTextBanner mb-0"
-              ></p>
-              <p class="textLength"><span>0</span>/80</p>
+                <!-- NOTE: concerva los valores de que cambio alejandro -->
+                <option value="banner1">Banner 1</option>
+                <option value="banner2">Banner 2</option>
+                <option value="banner3">Banner 3</option>
+              </select>
             </div>
-            <div class="col-5">
-              <div
-                class="d-flex justify-content-between align-items-center mb-2"
+            <div>
+              <button class="btnBold" onclick="styledInput('bold')">B</button>
+            </div>
+            <div class="dropdown">
+              <button
+                class="btn btn-link dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-                <label for="inputTitle">Subtitulo</label>
-                <button
-                  class="btn btn-primary py-1"
-                  onclick="resetText('sub-title')"
-                >
-                  reset
-                </button>
-              </div>
-              <p
-                data-type="sub-title"
-                contenteditable="true"
-                class="form-control inputTextBanner mb-0"
-              ></p>
-              <p class="textLength"><span>0</span>/150</p>
-            </div>
-          </div>
-          <div class="row pt-3">
-            <div class="col-12">
-              <button class="btn btn-primary" onclick="bannerPreview()">
-                Previsuaizar
+                A
               </button>
+              <div class="dropdown-menu">
+                <button
+                  class="drop-item"
+                  style="background-color: #2dcccd"
+                  onclick="styledInput('#2dcccd')"
+                ></button>
+                <button
+                  class="drop-item"
+                  style="background-color: #ffffff"
+                  onclick="styledInput('#ffffff')"
+                ></button>
+                <button
+                  class="drop-item"
+                  style="background-color: #5bbeff"
+                  onclick="styledInput('#5bbeff')"
+                ></button>
+                <button
+                  class="drop-item"
+                  style="background-color: #f8cd51"
+                  onclick="styledInput('#f8cd51')"
+                ></button>
+                <button
+                  class="drop-item"
+                  style="background-color: #043263"
+                  onclick="styledInput('#043263')"
+                ></button>
+                <button
+                  class="drop-item"
+                  style="background-color: #121212"
+                  onclick="styledInput('#121212')"
+                ></button>
+                <button
+                  class="drop-item"
+                  style="background-color: #004481"
+                  onclick="styledInput('#004481')"
+                ></button>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12">
+          <div class="editBannerContent">
+            <div class="row">
+              <div class="col-7">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-2"
+                >
+                  <label for="inputTitle">Titulo</label>
+                  <button
+                    class="btn btn-primary py-1"
+                    onclick="resetText('title')"
+                  >
+                    reset
+                  </button>
+                </div>
+                <p
+                  id="titleBanner"
+                  data-type="title"
+                  contenteditable="true"
+                  class="form-control inputTextBanner mb-0"
+                >
+                  ${noticia.titulo}
+                </p>
+                <p class="textLength"><span>0</span>/80</p>
+              </div>
+              <div class="col-5">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-2"
+                >
+                  <label for="inputTitle">Subtitulo</label>
+                  <button
+                    class="btn btn-primary py-1"
+                    onclick="resetText('sub-title')"
+                  >
+                    reset
+                  </button>
+                </div>
+                <p
+                  id="subtitleBanner"
+                  data-type="sub-title"
+                  contenteditable="true"
+                  class="form-control inputTextBanner mb-0"
+                >
+                  ${noticia.subtitulo}
+                </p>
+                <p class="textLength"><span>0</span>/150</p>
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-12">
+                <button class="btn btn-primary" onclick="guardarBanner()">
+                  Guardar
+                </button>
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="bannerPreview()"
+                >
+                  Previsualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="row">
+          <div class="col-12">
+            <form
+              name="formularioBannerArchivo"
+              action="cargarImagenBannerServlet"
+              method="post"
+              enctype="multipart/form-data"
+              style="padding: 16px 32px 20px"
+            >
+              <input
+                type="hidden"
+                id="action"
+                name="action"
+                value="guardarBannerArchivo"
+              />
+              <input
+                type="hidden"
+                id="idBannerHidden"
+                name="idBannerHidden"
+                value="${noticia.id}"
+              />
+              <input type="hidden" id="pwd" name="pwd" value="${pwd}" />
+              <input type="hidden" id="doc" name="doc" value="${doc}" />
+              <input
+                type="hidden"
+                name="numberBanner"
+                value="${numberBanner}"
+              />
+
               <div class="file-drop-area" id="input-drop-img-banner">
                 <img
-                  src="/assets/img/icons/upload_files.png"
+                  src="${pageContext.request.contextPath}/assets/img/icons/upload_files.png"
                   alt="cargar documento"
                   class="imgInput"
                 />
@@ -131,7 +199,34 @@
                   id="bannerFile"
                 />
               </div>
-              <div id="selectedFiles"></div>
+              <div id="selectedFiles">
+                <p>${noticia.imagen}</p>
+              </div>
+              <button class="btn btn-primary" onclick="guardarArchivoBanner()">
+                Guardar Archivo
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div id="bannerPreview">
+        <div class="swiper-slide">
+          <img
+            id="bannerImageSaved"
+            src="${pageContext.request.contextPath}/assets/img/banners/${noticia.imagen}"
+            alt="cargar documento"
+            class="imgInput"
+          />
+          <div class="swiper-text">
+            <div class="subtitle">
+              <h3 id="bannerPreview-title">${noticia.titulo}</h3>
+            </div>
+            <div class="text">
+              <p id="bannerPreview-subTitle">${noticia.subtitulo}</p>
             </div>
           </div>
         </div>
@@ -140,19 +235,28 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <div id="bannerPreview" style="display: none">
-        <div class="swiper-slide">
-          <img src="" />
-          <div class="swiper-text">
-            <div class="subtitle">
-              <h3 id="bannerPreview-title"></h3>
-            </div>
-            <div class="text">
-              <p id="bannerPreview-subTitle"></p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2>Streaming</h2>
+      <form
+        id="streamingForm"
+        name="streamingForm"
+        method="post"
+        action="streamingServlet"
+      >
+        <label>Titulo</label>
+        <input type="text" name="streamingTitulo" value="${streaming.titulo}" />
+        <label>Link</label>
+        <input type="text" name="streamingLink" value="${streaming.link}" />
+        <label>Fecha</label>
+        <input type="date" name="streamingFecha" value="${streamingFecha}" />
+        <label>Hora</label>
+        <input type="time" name="streamingHora" value="${streamingHora}" />
+        <input
+          type="submit"
+          name="streamingSubmit"
+          id="streamingSubmit"
+          value="Guardar Streaming"
+        />
+      </form>
     </div>
   </div>
 </div>

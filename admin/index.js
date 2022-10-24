@@ -202,20 +202,13 @@ function confirmar(nombre, id) {
 }
 function bannerPreview() {
   const inputImg = document.querySelector("#bannerFile")
+  const inputTitle = $(`.inputTextBanner[data-type="title"`).html()
+  const inputSubTitle = $(`.inputTextBanner[data-type="sub-title"`).html()
+  $("#bannerPreview-title").html(inputTitle)
+  $("#bannerPreview-subTitle").html(inputSubTitle)
   if (inputImg.files.length > 0) {
     const imgPreview = URL.createObjectURL(inputImg.files[0])
-    const inputTitle = $(`.inputTextBanner[data-type="title"`).html()
-    const inputSubTitle = $(`.inputTextBanner[data-type="sub-title"`).html()
     $("#bannerPreview img").attr("src", imgPreview)
-    $("#bannerPreview-title").html(inputTitle)
-    $("#bannerPreview-subTitle").html(inputSubTitle)
-    $("#bannerPreview").fadeIn()
-  } else {
-    showAlert(
-      "Seleccione una imagen para previsualizar",
-      "alert-danger",
-      "error"
-    )
   }
 }
 
@@ -262,4 +255,23 @@ function styledInput(typeStyle) {
 function resetText(type) {
   const originalText = $(`.inputTextBanner[data-type=${type}]`).text()
   $(`.inputTextBanner[data-type=${type}]`).text(originalText)
+}
+
+function guardarBanner() {
+  document.formularioBanner.titleBannerHidden.value = document
+    .getElementById("titleBanner")
+    .innerHTML.trim()
+  document.formularioBanner.subtitleBannerHidden.value = document
+    .getElementById("subtitleBanner")
+    .innerHTML.trim()
+  document.formularioBanner.submit()
+}
+
+function verbanner() {
+  document.getElementById("action").value = "mostrarBanner"
+  document.formularioBanner.submit()
+}
+
+function guardarArchivoBanner() {
+  document.formularioArchivoBanner.submit()
 }

@@ -132,6 +132,7 @@
 
 #bannerPreview {
   padding: 40px 0 100px;
+  min-height: 400px;
 }
 
 #bannerPreview .swiper-slide img {
@@ -160,7 +161,6 @@
 #bannerPreview .swiper-text {
   position: absolute;
   top: 60px;
-  left: 0;
   left: 115px;
   max-width: 450px;
   background: #fff;

@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-12">
+      <h2>Home</h2>
       <p>
         Editar el titulo, la imagen y el que deseas que aparezca en el banner.
       </p>
@@ -160,7 +161,7 @@
               action="cargarImagenBannerServlet"
               method="post"
               enctype="multipart/form-data"
-              style="padding: 16px 32px 20px"
+              style="padding: 0px 32px 20px"
             >
               <input
                 type="hidden"
@@ -233,30 +234,192 @@
       </div>
     </div>
   </div>
+</div>
+<div class="container mt-5 pb-5">
   <div class="row">
     <div class="col-12">
       <h2>Streaming</h2>
-      <form
-        id="streamingForm"
-        name="streamingForm"
-        method="post"
-        action="streamingServlet"
-      >
-        <label>Titulo</label>
-        <input type="text" name="streamingTitulo" value="${streaming.titulo}" />
-        <label>Link</label>
-        <input type="text" name="streamingLink" value="${streaming.link}" />
-        <label>Fecha</label>
-        <input type="date" name="streamingFecha" value="${streamingFecha}" />
-        <label>Hora</label>
-        <input type="time" name="streamingHora" value="${streamingHora}" />
-        <input
-          type="submit"
-          name="streamingSubmit"
-          id="streamingSubmit"
-          value="Guardar Streaming"
-        />
-      </form>
+      <p>
+        Editar el titulo, la fecha y la hora que quieres que aparezca en el
+        banner. Además, inserta el link del streaming
+      </p>
+      <div class="containerBanner">
+        <form
+          id="streamingForm"
+          name="streamingForm"
+          method="post"
+          action="streamingServlet"
+        >
+          <div class="editBtns">
+            <div>
+              <button
+                type="button"
+                class="btnBold"
+                onclick="styledInput('bold')"
+              >
+                B
+              </button>
+            </div>
+            <div class="dropdown">
+              <button
+                class="btn btn-link dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                A
+              </button>
+              <div class="dropdown-menu">
+                <button
+                  type="button"
+                  class="drop-item"
+                  style="background-color: #2dcccd"
+                  onclick="styledInput('#2dcccd')"
+                ></button>
+                <button
+                  type="button"
+                  class="drop-item"
+                  style="background-color: #ffffff"
+                  onclick="styledInput('#ffffff')"
+                ></button>
+                <button
+                  type="button"
+                  class="drop-item"
+                  style="background-color: #5bbeff"
+                  onclick="styledInput('#5bbeff')"
+                ></button>
+                <button
+                  type="button"
+                  class="drop-item"
+                  style="background-color: #f8cd51"
+                  onclick="styledInput('#f8cd51')"
+                ></button>
+                <button
+                  type="button"
+                  class="drop-item"
+                  style="background-color: #043263"
+                  onclick="styledInput('#043263')"
+                ></button>
+                <button
+                  type="button"
+                  class="drop-item"
+                  style="background-color: #121212"
+                  onclick="styledInput('#121212')"
+                ></button>
+                <button
+                  type="button"
+                  class="drop-item"
+                  style="background-color: #004481"
+                  onclick="styledInput('#004481')"
+                ></button>
+              </div>
+            </div>
+          </div>
+          <div class="editBannerContent">
+            <div class="row">
+              <div class="col-6">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-2"
+                >
+                  <label for="inputTitle">Titulo</label>
+                  <button
+                    type="button"
+                    class="btn btn-primary py-1"
+                    onclick="resetText('title-streaming')"
+                  >
+                    reset
+                  </button>
+                </div>
+                <p
+                  id="titlestreaming"
+                  data-type="title-streaming"
+                  contenteditable="true"
+                  class="form-control inputTextBanner mb-0"
+                  style="min-height: 125px"
+                >
+                  ${streaming.titulo}
+                </p>
+                <p class="textLength mb-0"><span>0</span>/80</p>
+                <input
+                  id="streaming-title-input"
+                  type="hidden"
+                  name="streamingTitulo"
+                  value="${streaming.titulo}"
+                />
+              </div>
+              <div class="col-6">
+                <div class="mb-3" style="padding-top: 2px">
+                  <label for="streaming-date" class="form-label py-1">
+                    Fecha
+                  </label>
+                  <input
+                    id="streaming-date"
+                    type="date"
+                    name="streamingFecha"
+                    value="${streamingFecha}"
+                    class="form-control"
+                  />
+                </div>
+                <div>
+                  <label for="streaming-hora" class="form-label">Hora</label>
+                  <input
+                    id="streaming-hora"
+                    type="time"
+                    name="streamingHora"
+                    value="${streamingHora}"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <label for="streaming-link" class="form-label">Link</label>
+                <input
+                  id="streaming-link"
+                  type="text"
+                  name="streamingLink"
+                  value="${streaming.link}"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="row pt-3">
+              <div class="col-12">
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  name="streamingSubmit"
+                  id="streamingSubmit"
+                >
+                  Guardar
+                </button>
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="streamingPreview()"
+                >
+                  Previsualizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <a href="#" id="streaming-preview">
+        <p class="streaming-title">
+          En esta pantalla el administrador podrá editar el banner carrusel del
+          home público y el banner informativo del streaming
+        </p>
+        <p class="streaming-date">
+          Fecha: <strong class="date">${streamingFecha}</strong><br />Hora:
+          <strong class="hour">${streamingHora}</strong>
+        </p>
+      </a>
     </div>
   </div>
 </div>

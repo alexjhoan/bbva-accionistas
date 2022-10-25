@@ -117,6 +117,11 @@ $(window).on("load", function () {
         .siblings(".textLength")
         .children("span")
         .text($(this).text().length)
+      bannerPreview()
+    })
+    $("#titlestreaming").on("keyup", function () {
+      $("#streaming-title-input").val($("#titlestreaming").html())
+      streamingPreview()
     })
   }, 50)
   alerts()
@@ -274,4 +279,16 @@ function verbanner() {
 
 function guardarArchivoBanner() {
   document.formularioArchivoBanner.submit()
+}
+
+function streamingPreview() {
+  const inputTitle = $("#titlestreaming").html()
+  const inputDate = new Date($("#streaming-date").val()).toLocaleDateString(
+    "en-GB",
+    { timeZone: "UTC" }
+  )
+  const inputHour = $("#streaming-hora").val()
+  $("#streaming-preview p.streaming-title").html(inputTitle)
+  $("#streaming-preview p.streaming-date strong.date").html(inputDate)
+  $("#streaming-preview p.streaming-date strong.hour").html(inputHour)
 }

@@ -283,11 +283,13 @@ function guardarArchivoBanner() {
 
 function streamingPreview() {
   const inputTitle = $("#titlestreaming").html()
+  const inputLink = $("#streaming-link").val().trim()
   const inputDate = new Date($("#streaming-date").val()).toLocaleDateString(
     "en-GB",
     { timeZone: "UTC" }
   )
   const inputHour = $("#streaming-hora").val()
+  $("#streaming-preview").attr("href", inputLink)
   $("#streaming-preview p.streaming-title").html(inputTitle)
   $("#streaming-preview p.streaming-date strong.date").html(inputDate)
   $("#streaming-preview p.streaming-date strong.hour").html(inputHour)

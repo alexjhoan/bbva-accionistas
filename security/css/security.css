@@ -1,0 +1,18 @@
+#security input {
+  background-color: var(--gray-light);
+  border-radius: 0;
+  border: none;
+  border-bottom: solid 1px var(--gray);
+}
+
+#security input:hover,
+#security input:active,
+#security input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+#security .input-group-text {
+  border: none;
+  background-color: #e8e8e8;
+}

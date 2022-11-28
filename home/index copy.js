@@ -87,8 +87,6 @@ $(window).on("load", function () {
       const doc = localStorage.getItem("document")
       const decrypt = CryptoJS.AES.decrypt(doc, key).toString(CryptoJS.enc.Utf8)
       const doct = atob(decrypt)
-      $("#fromDocument").hide()
-      $("#login .anotherAccount").show()
       $("#login #type_document").val(atob(key))
       $("#login #document").val(doct)
     }

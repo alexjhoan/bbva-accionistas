@@ -16,17 +16,17 @@
   font-size: 16px;
 }
 
-#page {
+#page_security {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 250px 1fr;
 }
 
-#page .content {
+#page_security .content {
   grid-column: 2/3;
 }
 
-#page .content > *:not(#header):not(#security) {
+#page_security .content > *:not(#header):not(#security) {
   display: none;
 }
 
@@ -144,7 +144,22 @@ button:hover,
 button:focus {
   outline: none;
 }
-#header h3 strong {
-  text-transform: uppercase;
-  font-size: 24px;
+
+#page_security input {
+  background-color: var(--gray-light);
+  border-radius: 0;
+  border: none;
+  border-bottom: solid 1px var(--gray);
+}
+
+#page_security input:hover,
+#page_security input:active,
+#page_security input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+#page_security .input-group-text {
+  border: none;
+  background-color: #e8e8e8;
 }

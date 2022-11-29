@@ -7,8 +7,8 @@ $(window).on("load", function () {
     $("#sidebar li").click(function () {
       const url = $(this).data("url")
       $(this).addClass("active").siblings().removeClass("active")
-      $(`#page .content`).children().not("#header,  #myalert").hide()
-      $(`#page .content #${url}`).show()
+      $(`#page_security .content`).children().not("#header,  #myalert").hide()
+      $(`#page_security .content #${url}`).show()
     })
   }, 50)
 })

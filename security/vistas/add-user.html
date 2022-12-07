@@ -29,14 +29,19 @@
       </div>
     </div>
     <div class="col-6">
-      <div class="form-floating mb-4">
-        <input
-          type="text"
-          class="form-control"
-          name="perfil"
-          placeholder="Perfil"
-        />
-        <label for="perfil">Perfil</label>
+      <div class="form-group form-floating select-floating mb-3">
+        <select
+          id="user_role"
+          name="user_role"
+          class="from-control"
+          tabindex="0"
+          title="Selecciona el tipo de documento"
+        >
+          <option value="2">Admin</option>
+          <option value="3">Seguridad</option>          
+        </select>
+        <img src="../assets/img/icons/arrow-down.svg" alt="" />
+        <label for="user_role">Perfil</label>
       </div>
     </div>
     <div class="col-6">

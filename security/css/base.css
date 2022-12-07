@@ -163,3 +163,42 @@ button:focus {
   border: none;
   background-color: #e8e8e8;
 }
+#page_security .select-floating {
+  background: var(--gray-light);
+  border-bottom: 1px solid var(--gray);
+}
+
+#page_security .select-floating select {
+  padding: 25px 10px 0 16px;
+  background-color: transparent;
+  border: 0;
+  height: 56px;
+  width: 100%;
+  border-radius: 1px;
+  -webkit-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  font-size: 15px !important;
+  position: relative;
+  z-index: 3;
+}
+
+#page_security .select-floating img {
+  position: absolute;
+  width: 15px;
+  height: auto;
+  top: calc(50% - 5px);
+  right: 10px;
+  z-index: 1;
+  transform: rotate(0deg);
+  transition: transform ease-in-out 0.15s;
+}
+
+#page_security .select-floating select:focus ~ img {
+  transform: rotate(-180deg);
+}
+
+#page_security .select-floating label {
+  opacity: 0.65;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}

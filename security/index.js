@@ -51,3 +51,28 @@ function showHome() {
   $("#page_security .content #new-user-success").hide()
   $("#page_security .content #add-user").show()
 }
+
+function openModal() {
+  const modalForm = `
+  <form class="row g-4">
+          <div class="col-12 col-md-6">
+            <label for="uservp" class="form-label m-0">Usuario VP</label>
+            <input type="text" class="form-control" id="uservp" value="" placeholder="${1+1}">
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="name" class="form-label m-0">Nombre y Apellido</label>
+            <input type="text" class="form-control" id="name" value="" placeholder="${1+2}">
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="perfil" class="form-label m-0">Perfil</label>
+            <input type="text" class="form-control" id="perfil" value="" placeholder="${1+3}">
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="email" class="form-label m-0">Email</label>
+            <input type="text" class="form-control" id="email" value="" placeholder="${1+4}">
+          </div>
+        </form>
+  `
+  $('#editUserModalBody').html(modalForm)
+  $('#editUserModal').modal('show');
+}

@@ -6,7 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/fonts/fonts.css" />
     <link rel="stylesheet" href="../assets/lib/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/lib/swiper/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/lib/bbva-swiper/bbva.iconfonts.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/lib/bbva-swiper/bbva.swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../assets/lib/bbva-swiper/bbva.slider.min.css"
+    />
     <link rel="stylesheet" href="./styles.css" />
     <script src="/assets/lib/aes.js"></script>
     <title>Document</title>
@@ -15,59 +26,123 @@
     <div data-component="header"></div>
     <div data-component="login"></div>
     <section id="banner">
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="../assets/img/banners/slider-dos.jpg" />
-            <div class="swiper-text">
-              <div class="subtitle" data-swiper-parallax="-200">
-                <h3>Compra y vende tus divisas en l&#237;nea</h3>
-              </div>
-              <div class="text" data-swiper-parallax="-100">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam dictum mattis velit, sit amet faucibus felis iaculis
-                  nec. Nulla laoreet justo vitae porttitor porttitor.
-                  Suspendisse in sem justo.
-                </p>
+      <div
+        class="marqueeslider__carousel slider slider--marquee swiper-pagination--dark swiper-pagination--image marqueeslider__carousel--autoplay marqueeslider__carousel--fade slider--loaded homepromomarquee--slide"
+        data-component="slider"
+        data-component-params='{
+        "selectors":{"items" : [".slide1", ".slide2", ".slide3"]},
+        "type":"marquee",
+        "arrowsConfig" : {"elementToFind": ".marqueeslider__slide", "classToCheck": ".complexmarquee__base--white"},
+        "addClassOnSlide" : {"elementToFind": ".marqueeslider__slide--homepromo", "classToAdd": "homepromomarquee--slide"},
+        "autoRotate":"true",
+        "transitionTime": 4,
+        "transitionType": "fade",
+        "lazyImages": "true"}'
+        data-component-id="be94ba81-46f3-4fa6-8a85-f6286402737e"
+      >
+        <div
+          class="swiper-button-next"
+          tabindex="0"
+          role="button"
+          aria-label="Next slide"
+        >
+          <i class="bbva-icon bbva-icon__2_017_forward"></i>
+        </div>
+        <div
+          class="swiper-button-prev"
+          tabindex="0"
+          role="button"
+          aria-label="Previous slide"
+        >
+          <i class="bbva-icon bbva-icon__2_046_back"></i>
+        </div>
+        <div
+          class="swiper-container swiper-container-fade swiper-container-initialized swiper-container-horizontal"
+        >
+          <div class="swiper-wrapper" style="transition-duration: 0ms">
+            <div class="swiper-slide slide1" data-swiper-slide-index="0">
+              <img src="../assets/img/banners/slider-dos.jpg" />
+              <div class="swiper-text">
+                <div class="subtitle" data-swiper-parallax="-200">
+                  <h3>Compra y vende tus divisas en l&#237;nea</h3>
+                </div>
+                <div class="text" data-swiper-parallax="-100">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aliquam dictum mattis velit, sit amet faucibus felis iaculis
+                    nec. Nulla laoreet justo vitae porttitor porttitor.
+                    Suspendisse in sem justo.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="../assets/img/banners/slider-tres.jpg" />
-            <div class="swiper-text">
-              <div class="subtitle" data-swiper-parallax="-200">
-                <h3>Cr&#233;dito Sostenible BBVA Provincial</h3>
-              </div>
-              <div class="text" data-swiper-parallax="-100">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam dictum mattis velit, sit amet faucibus felis iaculis
-                  nec. Nulla laoreet justo vitae porttitor porttitor.
-                  Suspendisse in sem justo.
-                </p>
+            <div class="swiper-slide slide2" data-swiper-slide-index="1">
+              <img src="../assets/img/banners/slider-tres.jpg" />
+              <div class="swiper-text">
+                <div class="subtitle" data-swiper-parallax="-200">
+                  <h3>Cr&#233;dito Sostenible BBVA Provincial</h3>
+                </div>
+                <div class="text" data-swiper-parallax="-100">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aliquam dictum mattis velit, sit amet faucibus felis iaculis
+                    nec. Nulla laoreet justo vitae porttitor porttitor.
+                    Suspendisse in sem justo.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="../assets/img/banners/slider-uno.png" />
-            <div class="swiper-text swiper-bg">
-              <div class="subtitle" data-swiper-parallax="-200">
-                <h3>Una cuenta en divisas en tu banco de siempre</h3>
-              </div>
-              <div class="text" data-swiper-parallax="-100">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam dictum mattis velit, sit amet faucibus felis iaculis
-                  nec. Nulla laoreet justo vitae porttitor porttitor.
-                </p>
+            <div class="swiper-slide slide3" data-swiper-slide-index="2">
+              <img src="../assets/img/banners/slider-uno.png" />
+              <div class="swiper-text swiper-bg">
+                <div class="subtitle" data-swiper-parallax="-200">
+                  <h3>Una cuenta en divisas en tu banco de siempre</h3>
+                </div>
+                <div class="text" data-swiper-parallax="-100">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aliquam dictum mattis velit, sit amet faucibus felis iaculis
+                    nec. Nulla laoreet justo vitae porttitor porttitor.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+        <div
+          class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"
+        >
+          <span
+            class="swiper-pagination-bullet"
+            tabindex="0"
+            role="button"
+            aria-label="Go to slide 1"
+          ></span
+          ><span
+            class="swiper-pagination-bullet"
+            tabindex="0"
+            role="button"
+            aria-label="Go to slide 2"
+          ></span
+          ><span
+            class="swiper-pagination-bullet"
+            tabindex="0"
+            role="button"
+            aria-label="Go to slide 3"
+          ></span
+          ><span
+            class="swiper-pagination-bullet"
+            tabindex="0"
+            role="button"
+            aria-label="Go to slide 4"
+          ></span
+          ><span
+            class="swiper-pagination-bullet swiper-pagination-bullet-active"
+            tabindex="0"
+            role="button"
+            aria-label="Go to slide 5"
+          ></span>
+        </div>
       </div>
     </section>
     <section id="documents">
@@ -146,7 +221,7 @@
     <div data-component="footer"></div>
     <script src="../assets/lib/jquery.min.js"></script>
     <script src="../assets/lib/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../assets/lib/swiper/swiper-bundle.min.js"></script>
+    <script src="../assets/lib/bbva-swiper/bbva.swiper.min.js"></script>
     <script src="../assets/lib/aes.js"></script>
     <script src="./index.js"></script>
   </body>

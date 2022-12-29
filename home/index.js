@@ -20,21 +20,21 @@ $(window).on("load", function () {
     }, 10)
     console.log("first")
   }
-  new Swiper(".mySwiper", {
-    loop: true,
-    autoplay: {
-      delay: 5000,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-    },
-  })
+  // new Swiper(".mySwiper", {
+  //   loop: true,
+  //   autoplay: {
+  //     delay: 5000,
+  //   },
+  //   navigation: {
+  //     nextEl: ".swiper-button-next",
+  //     prevEl: ".swiper-button-prev",
+  //   },
+  //   pagination: {
+  //     el: ".swiper-pagination",
+  //     clickable: true,
+  //     dynamicBullets: true,
+  //   },
+  // })
   $("#login #floatingPassword").on("keyup focus", function () {
     if (this.value != "") {
       $("#login #labelEye").show()

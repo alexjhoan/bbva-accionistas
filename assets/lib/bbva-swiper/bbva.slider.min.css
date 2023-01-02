@@ -4,6 +4,9 @@
 .slider::before,.slider::after{content:' ';display:block;height:0;width:0;overflow:hidden}
 .slider::after{clear:both}
 .slider--hidden .swiper-button-next,.slider--hidden .swiper-button-prev,.slider--hidden .swiper-pagination{display:none}
+.bbva-icon.bbva-icon__2_017_forward, .bbva-icon.bbva-icon__2_046_back{display: flex;}
+.bbva-icon.bbva-icon__2_017_forward:before{content: url(./angle-right.svg);width: 20px;height: 20px;}
+.bbva-icon.bbva-icon__2_046_back:before{content: url(./angle-left.svg);width: 20px;height: 20px;}
 @media(min-width:0) and (max-width:991px){.slider--hidden .swiper-button-next,.slider--hidden .swiper-button-prev,.slider--hidden .swiper-pagination{display:block}
 }
 @media(min-width:600px) and (max-width:991px){.slider--hidden .swiper-pagination--tablethidden{display:none}
